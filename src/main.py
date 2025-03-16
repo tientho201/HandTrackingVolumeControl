@@ -23,6 +23,8 @@ while True:
     frame = detector.findHands(frame)
     lmList = detector.findPos(frame, draw=False)
     if len(lmList) != 0:
+        x1 , y1 = lmList[8][1] , lmList[8][2]
+        cv2.circle(frame, (x1 , y1), 10, (255, 0, 255), cv2.FILLED)
         current_time = time.time()
         if (lmList[8][1] > w - 50 and lmList[8][1] < w and 
             lmList[8][2] < 50 and lmList[8][2] > 0 and
@@ -30,7 +32,6 @@ while True:
         ):
             check_volume = not check_volume
             last_toggle_time = current_time
-        print(current_time, last_toggle_time)
 
         
     if check_volume:
