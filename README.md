@@ -42,7 +42,7 @@ pip install -r requirements.txt
 
 1. Chạy chương trình:
 ```bash
-python src/main.py
+python main.py
 ```
 
 2. Các thao tác:
