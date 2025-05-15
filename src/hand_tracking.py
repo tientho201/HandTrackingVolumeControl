@@ -19,16 +19,29 @@ class Hand_Detection():
    
     # Hàm tìm kiếm bàn tay     
     def findHands(self , img , draw = True):
+        '''
+        Finds hands in a image
+        img: Image to find the hands in.
+        draw: Flag to draw the output on the image.
+        return: Image with or without drawings
+        '''
         imgRGB = cv2.cvtColor(img , cv2.COLOR_BGR2RGB)
         self.results = self.hands.process(imgRGB)
         if self.results.multi_hand_landmarks:
             for handLms in self.results.multi_hand_landmarks:
                 if draw:
-                    self.mpDraw.draw_landmarks(img , handLms , self.mpHands.HAND_CONNECTIONS , 
+                    self.mpDraw.draw_landmarks(img , handLms , self.mpHands.HAND_CONNECTIONS ,
                                                self.mpDraw.DrawingSpec(color=(121,22,76), thickness=2, circle_radius=4),
-                                               self.mpDraw.DrawingSpec(color=(250,44,250), thickness=2, circle_radius=2))
+                                               self.mpDraw.DrawingSpec(color=(255,255,250), thickness=2, circle_radius=2))
         return img
-    
+    # Hàm tìm kiếm bàn tay và hình chữ nhật bao quanh tay
+    def findHands_drawRectangle(self , img , draw = True , fileType = True):
+        imgRGB = cv2.cvtColor(img , cv2.COLOR_BGR2RGB)
+        self.results = self.hands.process(imgRGB)
+        
+        
+        
+    # Danh sách vị trí của bàn tay
     def findPos(self , img , handNo = 0 , draw = True):
         lmList = []
         if self.results.multi_hand_landmarks:

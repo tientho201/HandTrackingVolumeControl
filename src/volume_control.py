@@ -59,3 +59,7 @@ class VolumeController:
         cv2.rectangle(frame, (50, int(volBar)), (85, 400), (0, 255, 0), cv2.FILLED)
         cv2.putText(frame, f'{int(volPer)} %', (40, 450), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
         return frame
+
+class MonitorController:
+    def __init__(self):
+        pass
